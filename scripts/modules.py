@@ -17,7 +17,7 @@ CONSENSUSES = DATA / "consensuses"
 CONSENSUSES_ALIGNMENTS = DATA / "consensuses_alignments"
 
 def alignment_to_np(to_align):
-    align_np = [np.frombuffer(seq_record.seq.encode('utf-8'), dtype=np.int8) for seq_record in SeqIO.parse(to_align, "fasta")]
+    align_np = [np.frombuffer(seq_record.seq.upper().encode('utf-8'), dtype=np.int8) for seq_record in SeqIO.parse(to_align, "fasta")]
     align_np = np.stack(align_np)
     return align_np
 
